@@ -1,0 +1,38 @@
+/* home.css — novo hero da página inicial (substitui o desenho em SVG).
+   Carregar DEPOIS de paginas.css. Só afeta a home (.home-hero). */
+
+.home-hero{height:clamp(520px,50vw,760px);background:#d964d0}
+
+/* fundo: desenhado em código (SVG inline no index.html). A classe .scene já vem do paginas.css */
+.home-hero .scene{object-fit:cover}
+
+/* texto em HTML (editável) sobre a imagem */
+.home-hero .hero-text{
+  position:absolute;z-index:2;
+  left:clamp(20px,8vw,150px);top:42%;transform:translateY(-50%);
+  max-width:min(52vw,780px)
+}
+.home-hero h1{
+  position:static;transform:none;max-width:none;margin:0;
+  text-align:left;text-transform:uppercase;
+  font-size:clamp(28px,3.9vw,62px);line-height:1.1;
+  color:#f6b273;text-shadow:0 3px 8px rgba(130,40,140,.3)
+}
+.home-hero .hero-sub{
+  margin:.55em 0 0;font-family:var(--sora);font-weight:700;
+  font-size:clamp(20px,2.9vw,46px);line-height:1.22;
+  color:#fff;text-shadow:0 3px 8px rgba(130,40,140,.35)
+}
+
+/* tablet e celular: texto no topo, estudante embaixo */
+@media(max-width:860px){
+  .home-hero .hero-text{top:32px;left:20px;right:20px;transform:none;max-width:none}
+  .home-hero h1{font-size:clamp(26px,7vw,38px)}
+  .home-hero .hero-sub{font-size:clamp(18px,4.6vw,26px)}
+}
+
+/* transição suave: a base do topo se dissolve no fundo da página (sem linha de corte) */
+.home-hero{
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - clamp(90px,12vw,170px)),transparent 100%);
+          mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - clamp(90px,12vw,170px)),transparent 100%)
+}
